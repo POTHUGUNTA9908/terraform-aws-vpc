@@ -159,7 +159,7 @@ resource "aws_route_table" "database" {
   )
 }
 
-resource "aws_db_subnet_group" "db" {
+resource "aws_database_subnet_group" "db" {   
   name       = "${local.resource_name}"
   subnet_ids = aws_subnet.database[*].id
 
