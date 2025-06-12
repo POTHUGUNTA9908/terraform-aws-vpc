@@ -28,6 +28,7 @@ resource "aws_subnet" "public" {
   count = length(var.public_subnet_cidrs)
   vpc_id     = aws_vpc.main.id
   cidr_block = var.public_subnet_cidrs[count.index]
+  map_public_ip_on_launch = true
   tags = merge(
     var.common_tags,
     var.public_subnet_cidrs_tags,
@@ -65,6 +66,20 @@ resource "aws_subnet" "public" {
   }
   )
   }
+
+
+ resource "aws_db_subnet_group" "default" {
+  name       = "${local.resource_name}"
+  subnet_ids = aws_subnet.database[*].id
+
+  tags = merge(
+    var.common_tags,
+    var.database_subnet_group_tags,
+    {
+        Name = "${local.resource_name}"
+    }
+  )
+}
 
 
   resource "aws_eip" "nat" {
