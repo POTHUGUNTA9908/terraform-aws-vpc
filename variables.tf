@@ -259,7 +259,7 @@ variable "acceptor_vpc_id" {
   default = ""
 }
 
-variable "vpc_peering_tags" {
+variable "peering_tags" {
   type = map
   default = {}
 }
