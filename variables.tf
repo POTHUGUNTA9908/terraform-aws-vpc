@@ -264,3 +264,8 @@ variable "vpc_peering_tags" {
   default = {}
 }
 
+# variable "peering_tags" {
+#   description = "Tags to apply to the VPC peering connection"
+#   type        = map(string)
+#   default     = {} # Optional, depending on whether you want it to be required or not
+# }
